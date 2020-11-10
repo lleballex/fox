@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/fonts/Roboto-Regular.ttf</file>
+        <file>resources/icons/favicon.svg</file>
+        <file>resources/icons/home.svg</file>
+        <file>resources/fonts/Roboto-Medium.ttf</file>
+        <file>resources/fonts/Roboto-MediumItalic.ttf</file>
+    </qresource>
+</RCC>
