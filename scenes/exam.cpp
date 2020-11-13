@@ -7,6 +7,8 @@
 
 Exam::Exam(QWidget *parent) : QWidget(parent)
 {
+    srand(time(0));
+
     showFooter(this);
     nextButton = addFooterButton("Следующий");
 
@@ -27,7 +29,6 @@ void Exam::customizeTestWidget()
                          "qproperty-alignment: AlignHCenter;"
                          "}");
 
-    input->setPlaceholderText("V3");
     input->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     input->setStyleSheet("QLineEdit {"
                          "width: 300px;"
@@ -84,43 +85,55 @@ void Exam::customizeResultWidget()
 }
 
 
-void Exam::setVerb(int id)
-{
-    verb = getVerb(id);
-
-    input->setText("");
-    word->setText(verb.translate);
-}
-
-
 void Exam::showEvent(QShowEvent *)
 {
     int level = getUser().level;
+    verbIndex = -1;
     verbsCount = getVerbsCount(level);
-    rightCount = 0;
-    startVerbId = getStartVerbId(level);
-    setVerb(startVerbId);
+    rightAnswersCount = 0;
+    verbs = getVerbs(level);
+
+    changeVerb();
 
     if(testWidget->isHidden()) {
         testWidget->show();
         nextButton->show();
         resultWidget->hide();
     }
-    if(nextButton->text() != "Следующий") nextButton->setText("Следующий");
+    if(nextButton->text() != "Дальше") nextButton->setText("Дальше");
 }
 
 
 void Exam::changeVerb()
-{
-    if(input->text() == verb.v3) rightCount++;
-    if(verb.id == verbsCount + startVerbId - 2) nextButton->setText("Завершить");
+{  
+    if(verbIndex >= 0 && input->text() == rightAnswer) rightAnswersCount++;
+    if(verbIndex + 2 >= verbsCount) nextButton->setText("Завершить");
 
-    if(verb.id < verbsCount + startVerbId - 1) setVerb(verb.id + 1);
-    else {
-        result->setText(QString("Правильных ответов: %1/%2").arg(rightCount).arg(verbsCount));
+    verbIndex++;
+
+    if(verbIndex >= verbsCount) {
+        result->setText(QString("Правильных ответов: %1/%2").arg(rightAnswersCount).arg(verbsCount));
         testWidget->hide();
         nextButton->hide();
         resultWidget->show();
+    } else {
+        input->setText("");
+        word->setText(verbs[verbIndex].translate);
+
+        switch(rand() % 3) {
+        case 0:
+            rightAnswer = verbs[verbIndex].v1;
+            input->setPlaceholderText("V1");
+            break;
+        case 1:
+            rightAnswer = verbs[verbIndex].v2;
+            input->setPlaceholderText("V2");
+            break;
+        case 2:
+            rightAnswer = verbs[verbIndex].v3;
+            input->setPlaceholderText("V3");
+            break;
+        }
     }
 }
 

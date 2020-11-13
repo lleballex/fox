@@ -46,7 +46,7 @@ void Dictionary::fillTable()
 
     QFont font = loadFonts();
     font.setItalic(true);
-    font.setPixelSize(16);
+    font.setPixelSize(15);
 
     for(int i = 0; i < verbsCount * 2; i++) {
         table->insertRow(i);

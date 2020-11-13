@@ -23,6 +23,7 @@ private:
     QString getButtonStyle();
 
 private slots:
+    void setLearningScene();
     void setTrainingScene();
     void setExamScene();
     void setDictionaryScene();

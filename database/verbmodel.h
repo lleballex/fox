@@ -14,6 +14,8 @@ private:
         static const int v2 = 2;
         static const int v3 = 3;
         static const int translate = 4;
+        static const int level = 5;
+        static const int image = 6;
     };
 
 protected:
@@ -23,6 +25,8 @@ protected:
         char v2[30];
         char v3[30];
         char translate[30];
+        int level;
+        char image[30];
     };
 
     int getVerbsCount(int level = 0);

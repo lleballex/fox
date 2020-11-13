@@ -6,6 +6,12 @@
 
 MainMenu::MainMenu(QWidget *parent) : QWidget(parent)
 {
+    //QLabel *label = new QLabel(this);
+    //QPixmap pixmap(":/resources/images/fox.png");
+    //label->setPixmap(pixmap.scaled(180, 180, Qt::KeepAspectRatio));
+    //label->move(500, 280);
+    //label->show();
+
     buttons[0].setText("Изучение");
     buttons[1].setText("Тренировка");
     buttons[2].setText("Экзамен");
@@ -24,6 +30,7 @@ MainMenu::MainMenu(QWidget *parent) : QWidget(parent)
 
     setLayout(layout);
 
+    connect(&buttons[0], SIGNAL(clicked()), this, SLOT(setLearningScene()));
     connect(&buttons[1], SIGNAL(clicked()), this, SLOT(setTrainingScene()));
     connect(&buttons[2], SIGNAL(clicked()), this, SLOT(setExamScene()));
     connect(&buttons[3], SIGNAL(clicked()), this, SLOT(setDictionaryScene()));
@@ -46,6 +53,13 @@ QString MainMenu::getButtonStyle()
                    "QPushButton:hover {"
                    "background: %2;"
                    "}").arg(WIDGET_COLOR).arg(LIGHT_WIDGET_COLOR);
+}
+
+
+void MainMenu::setLearningScene()
+{
+    nextSceneIndex = MainWindow::LEARNING_INDEX;
+    emit changeScene();
 }
 
 

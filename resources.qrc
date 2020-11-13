@@ -6,4 +6,12 @@
         <file>resources/fonts/Roboto-Medium.ttf</file>
         <file>resources/fonts/Roboto-MediumItalic.ttf</file>
     </qresource>
+    <qresource prefix="/verbs">
+        <file>resources/images/build.jpg</file>
+        <file>resources/images/choose.jpg</file>
+        <file>resources/images/dream.jpg</file>
+        <file>resources/images/sink.jpg</file>
+        <file>resources/images/sleep.jpg</file>
+        <file>resources/images/fox.png</file>
+    </qresource>
 </RCC>

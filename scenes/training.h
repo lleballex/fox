@@ -18,9 +18,9 @@ public:
     explicit Training(QWidget *parent = nullptr);
 
 private:
+    int verbIndex;
     int verbsCount;
     int errorsCount;
-    int startVerbId;
 
     QWidget *testWidget = new QWidget;
     QWidget *resultWidget = new QWidget;
@@ -32,11 +32,10 @@ private:
     QPushButton *nextButton;
     QPushButton *errorButtons = new QPushButton[2];
 
-    VerbModel::Verb verb;
+    VerbModel::Verb *verbs;
 
     void customizeTestWidget();
     void customizeResultWidget();
-    void setVerb(int id = 1);
     void showEvent(QShowEvent *);
 
     QString getLabelStyle(bool success = false, bool wrong = false);

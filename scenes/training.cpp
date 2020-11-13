@@ -117,22 +117,15 @@ void Training::customizeResultWidget()
 }
 
 
-void Training::setVerb(int id)
-{
-    verb = getVerb(id);
-
-    word->setText(verb.v1);
-    for(int i = 0; i < 2; i++) inputs[i].setText("");
-}
-
-
 void Training::showEvent(QShowEvent *)
 {
     int level = getUser().level;
-    verbsCount = getVerbsCount(level);
+    verbIndex = -1;
     errorsCount = 0;
-    startVerbId = getStartVerbId(level);
-    setVerb(startVerbId);
+    verbsCount = getVerbsCount(level);
+    verbs = getVerbs(level);
+
+    changeVerb();
 
     if(!nextButton->isHidden()) nextButton->hide();
 
@@ -196,7 +189,7 @@ void Training::checkVerb()
         inputs[i].setReadOnly(true);
     }
 
-    if(inputs[0].text() == verb.v2 && inputs[1].text() == verb.v3) {
+    if(inputs[0].text() == verbs[verbIndex].v2 && inputs[1].text() == verbs[verbIndex].v3) {
         nextButton->show();
         word->setStyleSheet(getLabelStyle(true));
         for(int i = 0; i < 2; i++) {
@@ -218,9 +211,11 @@ void Training::checkVerb()
 void Training::changeVerb()
 {
     nextButton->hide();
+    verbIndex++;
 
-    if(verb.id < verbsCount + startVerbId - 1) {
-        setVerb(verb.id + 1);
+    if(verbIndex < verbsCount) {
+        word->setText(verbs[verbIndex].v1);
+        for(int i = 0; i < 2; i++) inputs[i].setText("");
         checkButton->show();
         word->setStyleSheet(getLabelStyle());
         for(int i = 0; i < 2; i++) {
@@ -239,7 +234,7 @@ void Training::changeVerb()
 
 void Training::tryAgain()
 {
-    verb.id--;
+    verbIndex--;
     for(int i = 0; i < 2; i++) errorButtons[i].hide();
     changeVerb();
 }
@@ -248,8 +243,8 @@ void Training::tryAgain()
 void Training::showRightAnswer()
 {
     for(int i = 0; i < 2; i++) errorButtons[i].hide();
-    inputs[0].setText(verb.v2);
-    inputs[1].setText(verb.v3);
+    inputs[0].setText(verbs[verbIndex].v2);
+    inputs[1].setText(verbs[verbIndex].v3);
     checkVerb();
 }
 

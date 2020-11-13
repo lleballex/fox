@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,6 +23,7 @@ SOURCES += \
     mainwindow.cpp \
     scenes/dictionary.cpp \
     scenes/exam.cpp \
+    scenes/learning.cpp \
     scenes/levelchoice.cpp \
     scenes/mainmenu.cpp \
     scenes/training.cpp
@@ -34,6 +35,7 @@ HEADERS += \
     mainwindow.h \
     scenes/dictionary.h \
     scenes/exam.h \
+    scenes/learning.h \
     scenes/levelchoice.h \
     scenes/mainmenu.h \
     scenes/training.h

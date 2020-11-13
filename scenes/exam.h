@@ -18,11 +18,12 @@ public:
     explicit Exam(QWidget *parent = nullptr);
 
 private:
+    int verbIndex;
     int verbsCount;
-    int rightCount;
-    int startVerbId;
+    int rightAnswersCount;
+    char *rightAnswer;
 
-    VerbModel::Verb verb;
+    VerbModel::Verb *verbs;
 
     QWidget *testWidget = new QWidget;
     QWidget *resultWidget = new QWidget;
@@ -33,7 +34,6 @@ private:
 
     void customizeTestWidget();
     void customizeResultWidget();
-    void setVerb(int id);
     void showEvent(QShowEvent *);
 
 private slots:

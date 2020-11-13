@@ -28,12 +28,12 @@ int VerbModel::getStartVerbId(int level)
 
 VerbModel::Verb *VerbModel::getVerbs(int level)
 {
-    int verbsCount = getVerbsCount();
+    int verbsCount = getVerbsCount(level);
     QString q = "SELECT * FROM verbs";
     if(level > 0) q = QString("SELECT * FROM verbs WHERE level = %1").arg(level);
 
     VerbModel::Verb *verbs = new VerbModel::Verb[verbsCount];
-    QSqlQuery query("SELECT * FROM verbs");
+    QSqlQuery query(q);
 
     for(int i = 0; i < verbsCount; i++) {
         query.next();
@@ -43,6 +43,8 @@ VerbModel::Verb *VerbModel::getVerbs(int level)
         strcpy(verb.v2, query.value(VerbModel::INDEXES::v2).toString().toUtf8());
         strcpy(verb.v3, query.value(VerbModel::INDEXES::v3).toString().toUtf8());
         strcpy(verb.translate, query.value(VerbModel::INDEXES::translate).toString().toUtf8());
+        verb.level = query.value(VerbModel::INDEXES::level).toInt();
+        strcpy(verb.image, query.value(VerbModel::INDEXES::image).toString().toUtf8());
         verbs[i] = verb;
     }
 
@@ -61,6 +63,8 @@ VerbModel::Verb VerbModel::getVerb(int id)
     strcpy(verb.v2, query.value(VerbModel::INDEXES::v2).toString().toUtf8());
     strcpy(verb.v3, query.value(VerbModel::INDEXES::v3).toString().toUtf8());
     strcpy(verb.translate, query.value(VerbModel::INDEXES::translate).toString().toUtf8());
+    verb.level = query.value(VerbModel::INDEXES::level).toInt();
+    strcpy(verb.image, query.value(VerbModel::INDEXES::image).toString().toUtf8());
 
     return verb;
 }
