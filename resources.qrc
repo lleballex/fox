@@ -7,11 +7,10 @@
         <file>resources/fonts/Roboto-MediumItalic.ttf</file>
     </qresource>
     <qresource prefix="/verbs">
-        <file>resources/images/build.jpg</file>
-        <file>resources/images/choose.jpg</file>
-        <file>resources/images/dream.jpg</file>
-        <file>resources/images/sink.jpg</file>
-        <file>resources/images/sleep.jpg</file>
-        <file>resources/images/fox.png</file>
+        <file>resources/images/build.png</file>
+        <file>resources/images/choose.png</file>
+        <file>resources/images/dream.png</file>
+        <file>resources/images/sink.png</file>
+        <file>resources/images/sleep.png</file>
     </qresource>
 </RCC>
