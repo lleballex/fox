@@ -1,6 +1,8 @@
 #ifndef VERBMODEL_H
 #define VERBMODEL_H
 
+#include <QString>
+
 
 class VerbModel
 {
@@ -14,21 +16,20 @@ private:
         static const int v3 = 2;
         static const int translate = 3;
         static const int level = 4;
-        static const int image = 5;
     };
 
 protected:
     struct Verb {
         char v1[30];
-        char v2[30];
-        char v3[30];
-        char translate[30];
+        char v2[70];
+        char v3[70];
+        char translate[70];
         int level;
-        char image[30];
     };
 
-    int getVerbsCount(int level = 0);
+    int getVerbsCount(int level = 0, QString text = "");
     Verb *getVerbs(int level = 0);
+    Verb *searchVerbs(QString text);
 };
 
 

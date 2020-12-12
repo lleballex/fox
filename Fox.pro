@@ -21,6 +21,7 @@ SOURCES += \
     general.cpp \
     main.cpp \
     mainwindow.cpp \
+    percentpanel.cpp \
     scenes/dictionary.cpp \
     scenes/exam.cpp \
     scenes/learning.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     database/verbmodel.h \
     general.h \
     mainwindow.h \
+    percentpanel.h \
     scenes/dictionary.h \
     scenes/exam.h \
     scenes/learning.h \

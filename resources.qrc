@@ -5,12 +5,7 @@
         <file>resources/icons/home.svg</file>
         <file>resources/fonts/Roboto-Medium.ttf</file>
         <file>resources/fonts/Roboto-MediumItalic.ttf</file>
-    </qresource>
-    <qresource prefix="/verbs">
-        <file>resources/images/build.png</file>
-        <file>resources/images/choose.png</file>
-        <file>resources/images/dream.png</file>
-        <file>resources/images/sink.png</file>
-        <file>resources/images/sleep.png</file>
+        <file>resources/icons/search.svg</file>
+        <file>resources/icons/times.svg</file>
     </qresource>
 </RCC>

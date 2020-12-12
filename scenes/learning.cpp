@@ -1,6 +1,7 @@
 #include "learning.h"
 
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 
 
 Learning::Learning(QWidget *parent) : QWidget(parent)
@@ -9,6 +10,7 @@ Learning::Learning(QWidget *parent) : QWidget(parent)
     nextButton = addFooterButton("Дальше");
 
     customizeWidget();
+    percentPanel->show(this, WINDOW_WIDTH);
 
     connect(nextButton, SIGNAL(clicked()), this, SLOT(changeVerb()));
     connect(getMenuButton(), SIGNAL(clicked()), this, SLOT(setMenuScene()));
@@ -42,7 +44,7 @@ void Learning::customizeWidget()
     layout->addWidget(image);
 
     QWidget *widget = new QWidget(this);
-    widget->setGeometry(0, FOOTER_MARGIN, WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - FOOTER_MARGIN);
+    widget->setGeometry(0, percentPanel->height(), WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - percentPanel->height());
     widget->setLayout(layout);
     widget->show();
 }
@@ -68,14 +70,12 @@ void Learning::changeVerb()
 
     verbIndex++;
 
+    percentPanel->update(int((verbIndex + 1.f) / verbsCount * 100));
     words->setText(QString("%1 - %2 - %3").arg(verbs[verbIndex].v1).arg(verbs[verbIndex].v2).arg(verbs[verbIndex].v3));
     translate->setText(verbs[verbIndex].translate);
 
-    if(!QString(verbs[verbIndex].image).isEmpty()) {
-        QPixmap pixmap(QString(":/verbs/resources/images/%1").arg(verbs[verbIndex].image));
-        image->setPixmap(pixmap.scaledToHeight(300));
-        image->show();
-    } else image->hide();
+    QPixmap pixmap(QString("./resources/images/%1.png").arg(verbs[verbIndex].v1));
+    image->setPixmap(pixmap.scaledToHeight(300));
 }
 
 

@@ -13,6 +13,7 @@ Training::Training(QWidget *parent) : QWidget(parent)
     nextButton->hide();
     customizeTestWidget();
     customizeResultWidget();
+    percentPanel->show(this, WINDOW_WIDTH);
 
     connect(checkButton, SIGNAL(clicked()), this, SLOT(checkVerb()));
     connect(nextButton, SIGNAL(clicked()), this, SLOT(changeVerb()));
@@ -81,7 +82,7 @@ void Training::customizeTestWidget()
 
     testWidget->setParent(this);
     testWidget->setLayout(layout);
-    testWidget->setGeometry(0, FOOTER_MARGIN, WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - FOOTER_MARGIN);
+    testWidget->setGeometry(0, percentPanel->height(), WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - percentPanel->height());
     testWidget->show();
 }
 
@@ -111,7 +112,7 @@ void Training::customizeResultWidget()
     layout->addWidget(result);
 
     resultWidget->setParent(this);
-    resultWidget->setGeometry(0, FOOTER_MARGIN, WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - FOOTER_MARGIN);
+    resultWidget->setGeometry(0, percentPanel->height(), WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - percentPanel->height());
     resultWidget->setLayout(layout);
     resultWidget->hide();
 }
@@ -212,6 +213,7 @@ void Training::changeVerb()
 {
     nextButton->hide();
     verbIndex++;
+    percentPanel->update(int(100.f * verbIndex / verbsCount));
 
     if(verbIndex < verbsCount) {
         word->setText(verbs[verbIndex].v1);

@@ -2,6 +2,7 @@
 #define DICTIONARY_H
 
 #include <QWidget>
+#include <QLineEdit>
 #include <QTableWidget>
 
 #include "general.h"
@@ -16,11 +17,18 @@ public:
 
 private:
     QTableWidget *table = new QTableWidget;
+    QLineEdit *input = new QLineEdit;
+    QPushButton *closeSearchButton = new QPushButton;
+    QPushButton *searchButton;
 
     void customizeTable();
-    void fillTable();
+    void customizeInput();
+    void fillTable(VerbModel::Verb *verbs, int verbsCount);
 
 private slots:
+    void showSearchInput();
+    void hideSearchInput();
+    void search();
     void setMenuScene();
 
 signals:

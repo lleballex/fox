@@ -28,9 +28,10 @@ protected:
     const QString LIGHT_WIDGET_COLOR = "#8b50a4";
 
     void showFooter(QWidget *parent);
+    void addFooterObject(QWidget *obj);
 
     QFont loadFonts();
-    QPushButton *addFooterButton(QString text);
+    QPushButton *addFooterButton(QString text, QString icon = "");
     QPushButton *getMenuButton();
     QPalette getMainPalette();
     QString getMainStyle();

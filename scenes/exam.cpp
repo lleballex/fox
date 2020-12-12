@@ -2,8 +2,6 @@
 
 #include <QVBoxLayout>
 
-#include <QDebug>
-
 
 Exam::Exam(QWidget *parent) : QWidget(parent)
 {
@@ -14,6 +12,7 @@ Exam::Exam(QWidget *parent) : QWidget(parent)
 
     customizeTestWidget();
     customizeResultWidget();
+    percentPanel->show(this, WINDOW_WIDTH);
 
     connect(nextButton, SIGNAL(clicked()), this, SLOT(changeVerb()));
     connect(getMenuButton(), SIGNAL(clicked()), this, SLOT(setMenuScene()));
@@ -49,7 +48,7 @@ void Exam::customizeTestWidget()
 
     testWidget->setParent(this);
     testWidget->setLayout(layout);
-    testWidget->setGeometry(0, FOOTER_MARGIN, WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - FOOTER_MARGIN);
+    testWidget->setGeometry(0, percentPanel->height(), WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - percentPanel->height());
     testWidget->show();
 }
 
@@ -79,7 +78,7 @@ void Exam::customizeResultWidget()
     layout->addWidget(result);
 
     resultWidget->setParent(this);
-    resultWidget->setGeometry(0, FOOTER_MARGIN, WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - FOOTER_MARGIN);
+    resultWidget->setGeometry(0, percentPanel->height(), WINDOW_WIDTH, WINDOW_HEIGHT - FOOTER_HEIGHT - percentPanel->height());
     resultWidget->setLayout(layout);
     resultWidget->hide();
 }
@@ -110,6 +109,8 @@ void Exam::changeVerb()
     if(verbIndex + 2 >= verbsCount) nextButton->setText("Завершить");
 
     verbIndex++;
+
+    percentPanel->update(int(100.f * verbIndex / verbsCount));
 
     if(verbIndex >= verbsCount) {
         result->setText(QString("Правильных ответов: %1/%2").arg(rightAnswersCount).arg(verbsCount));

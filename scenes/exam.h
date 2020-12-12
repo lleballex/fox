@@ -7,6 +7,7 @@
 #include <QPushButton>
 
 #include "general.h"
+#include "percentpanel.h"
 #include "database/verbmodel.h"
 #include "database/usermodel.h"
 
@@ -24,6 +25,7 @@ private:
     char *rightAnswer;
 
     VerbModel::Verb *verbs;
+    PercentPanel *percentPanel = new PercentPanel;
 
     QWidget *testWidget = new QWidget;
     QWidget *resultWidget = new QWidget;

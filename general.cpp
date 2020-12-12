@@ -42,6 +42,12 @@ void General::showFooter(QWidget *parent)
 }
 
 
+void General::addFooterObject(QWidget *object)
+{
+    footerLayout->addWidget(object);
+}
+
+
 QFont General::loadFonts()
 {  
     int regularId = QFontDatabase::addApplicationFont(":/resources/fonts/Roboto-Regular.ttf");
@@ -60,9 +66,18 @@ QFont General::loadFonts()
 }
 
 
-QPushButton *General::addFooterButton(QString text)
+QPushButton *General::addFooterButton(QString text, QString icon)
 {
-    QPushButton *button = new QPushButton(text);
+    QPushButton *button = new QPushButton();
+
+    if(!text.isEmpty()) button->setText(text);
+    if(!icon.isEmpty()) {
+        int size = FOOTER_HEIGHT - FOOTER_MARGIN * 2;
+        button->setIcon(QIcon(QPixmap(icon)));
+        button->setFixedSize(size, size);
+        button->setIconSize(QSize(size - 10, size - 10));
+    }
+
     button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     button->setCursor(Qt::PointingHandCursor);
     button->setStyleSheet(QString("QPushButton {"
