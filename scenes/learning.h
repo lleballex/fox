@@ -25,6 +25,7 @@ private:
     QLabel *translate = new QLabel;
     QLabel *image = new QLabel;
     QPushButton *nextButton;
+    QPushButton *backButton;
 
     VerbModel::Verb *verbs;
     PercentPanel *percentPanel = new PercentPanel;
@@ -34,6 +35,7 @@ private:
 
 private slots:
     void changeVerb();
+    void goBack();
     void setMenuScene();
 
 signals:

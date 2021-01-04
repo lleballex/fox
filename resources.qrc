@@ -7,5 +7,6 @@
         <file>resources/fonts/Roboto-MediumItalic.ttf</file>
         <file>resources/icons/search.svg</file>
         <file>resources/icons/times.svg</file>
+        <file>resources/images/FOX.png</file>
     </qresource>
 </RCC>

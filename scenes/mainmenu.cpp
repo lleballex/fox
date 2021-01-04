@@ -24,6 +24,13 @@ MainMenu::MainMenu(QWidget *parent) : QWidget(parent)
 
     setLayout(layout);
 
+    QPixmap pix(":/resources/images/FOX.png");
+    image->setParent(this);
+    image->setPixmap(pix.scaled(280, 280, Qt::KeepAspectRatio));
+    image->resize(210, 280);
+    image->move(0, 240);
+    image->show();
+
     connect(&buttons[0], SIGNAL(clicked()), this, SLOT(setLearningScene()));
     connect(&buttons[1], SIGNAL(clicked()), this, SLOT(setTrainingScene()));
     connect(&buttons[2], SIGNAL(clicked()), this, SLOT(setExamScene()));

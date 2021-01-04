@@ -2,6 +2,7 @@
 #define MAINMENU_H
 
 #include <QWidget>
+#include <QLabel>
 #include <QPushButton>
 
 #include "general.h"
@@ -19,6 +20,7 @@ private:
     const int buttonsCount = 6;
 
     QPushButton *buttons = new QPushButton[buttonsCount];
+    QLabel *image = new QLabel;
 
     QString getButtonStyle();
 
