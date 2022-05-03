@@ -1,10 +1,13 @@
 # ⚡ Fox
 
-It is a program for learning irregular English verbs. Fox has several levels of complexity, each of which has its own verbs.
+![](https://img.shields.io/badge/platform-windows-informational)
+![](https://img.shields.io/github/license/lleballex/fox)
+
+It is a program for learning irregular English verbs. Fox has several levels of complexity, each of which has its own verbs
 
 <div>
-  <img src="https://i.imgur.com/sPvtZie.png" width="49%">
-  <img src="https://i.imgur.com/plHETj7.png" width="49%">
+  <img src="https://i.imgur.com/1izjdiJ.png" width="49%">
+  <img src="https://i.imgur.com/GV3s6Wx.png" width="49%">
 </div>
 
 ## Getting started
