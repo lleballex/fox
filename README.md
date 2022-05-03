@@ -4,7 +4,7 @@ It is a program for learning irregular English verbs. Fox has several levels of 
 
 <div>
   <img src="https://i.imgur.com/sPvtZie.png" width="49%">
-  <img src="https://i.imgur.com/plHETj7.png" width="49%" align="right">
+  <img src="https://i.imgur.com/plHETj7.png" width="49%">
 </div>
 
 ## Getting started
